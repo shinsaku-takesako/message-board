@@ -8,13 +8,27 @@
         <% @messages.each do |message| %>
             <span class="label label-info"><%= message.name %></span>
             <%= message.body %>
-            <br />
+            <br>
         <% end %>
     </div>
 </div>
 
 <div class="form-horizontal">
     <%= form_for(Message.new) do |f| %>
+        <!-- エラー表示部分 -->
+        <% if @message.errors.present? %>
+            <div class="alert alert-danger">
+                <%= alert %>
+                <ul>
+                    <% @message.errors.full_messages.each do |full_messages| %>
+                    <li>
+                        <%= full_messages %>
+                    </li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        
         <!-- テキストボックス（名前）-->
         <div class="form-group">
             <label class="col-sm-2 control-label">名前：</label>
@@ -34,7 +48,7 @@
         <!-- 送信ボタン -->
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-2">
-                <%= f.submit :class => "btn btn-default" %>
+                <%= f.submit :class => "btn btn-primary" %>
             </div>
         </div>
     <% end %>
