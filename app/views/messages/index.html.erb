@@ -13,11 +13,29 @@
     </div>
 </div>
 
-<%= form_for(Message.new) do |f| %>
-    名前：
-    <%= f.text_field :name %>
-    
-    内容：
-    <%= f.text_field :body %>
-    <%= f.submit %>
-<% end %>
+<div class="form-horizontal">
+    <%= form_for(Message.new) do |f| %>
+        <!-- テキストボックス（名前）-->
+        <div class="form-group">
+            <label class="col-sm-2 control-label">名前：</label>
+            <div class="col-sm-3">
+                <%= f.text_field :name , :class => "form-control" , :placeholder => "Name" %>
+            </div>
+        </div>
+        
+        <!-- #テキストエリア（内容）-->
+        <div class="form-group">
+            <label class="col-sm-2 control-label">内容：</label>
+            <div class="col-sm-5">
+                <%= f.text_area :body , :class => "form-control" , :placeholder => "Message" %>
+            </div>
+        </div>
+        
+        <!-- 送信ボタン -->
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-2">
+                <%= f.submit :class => "btn btn-default" %>
+            </div>
+        </div>
+    <% end %>
+</div>
