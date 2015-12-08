@@ -13,43 +13,8 @@
     </div>
 </div>
 
-<div class="form-horizontal">
-    <%= form_for(Message.new) do |f| %>
-        <!-- エラー表示部分 -->
-        <% if @message.errors.present? %>
-            <div class="alert alert-danger">
-                <%= alert %>
-                <ul>
-                    <% @message.errors.full_messages.each do |full_messages| %>
-                    <li>
-                        <%= full_messages %>
-                    </li>
-                    <% end %>
-                </ul>
-            </div>
-        <% end %>
-        
-        <!-- テキストボックス（名前）-->
-        <div class="form-group">
-            <label for="message_name" class="col-sm-2 control-label">名前：</label>
-            <div class="col-sm-3">
-                <%= f.text_field :name , :class => "form-control" , :placeholder => "Name" %>
-            </div>
-        </div>
-        
-        <!-- #テキストエリア（内容）-->
-        <div class="form-group">
-            <label for="message_body" class="col-sm-2 control-label">内容：</label>
-            <div class="col-sm-5">
-                <%= f.text_area :body , :class => "form-control" , :placeholder => "Message" %>
-            </div>
-        </div>
-        
-        <!-- 送信ボタン -->
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-2">
-                <%= f.submit :class => "btn btn-primary" %>
-            </div>
-        </div>
-    <% end %>
+<% #部分テンプレート読込 %>
+
+<%= render 'form' %>
+
 </div>
